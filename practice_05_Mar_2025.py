@@ -232,4 +232,143 @@ print(inventory)
 new_inventory = sorted(inventory)
 print(new_inventory)
 
+# tuples are immutable and are created using parentheses.
+"""
+Tuples are one of the built-in data structures in Python. Just like lists, tuples can hold a sequence of items and have a few key advantages:
 
+Tuples are more memory efficient than lists
+Tuples have a slightly higher time efficiency than lists
+This is mostly because tuples are immutable, meaning we can’t modify a tuple’s elements after creating one, and do not require an extra memory block like lists. Because of this, tuples are great to work with if you are working with data that won’t need to be changed in your code.
+
+In this article, we’ll cover features of tuples, indexing, and common built-in methods and functions that can be used with tuples.
+
+Tuples
+In Python, tuples are defined with parentheses () with comma-separated values. Just like lists, tuples are sequences and can hold objects of different data types.
+
+This tuple has 4 items. We can see that we have 4 items separated by commas:
+
+my_tuple = ('abc', 123, 'def', 456)
+
+Tuples are capable of holding one item as long as the item is followed by a comma:
+
+my_tuple = ('abc',)
+
+Tuple Indexing and Slicing
+Items in a tuple can be accessed with their index, otherwise known as their position in the tuple. Take a look at the following tuple:
+
+my_tuple = ('abc', 123, 'def', 456, 789, 'ghi')
+
+Indices can be used to access specific items of this tuple. For example, if we want to access the first item, we can use index 0 (remember that Python is a zero-index language!). We write the name of the tuple followed by brackets [] that contains the index to access the item. This code would print the first item, ’abc’.
+
+print(my_tuple[0]) # prints abc
+
+We can also apply slicing, using a range of indices to access multiple items just like in a list. The brackets should contain the first index as well as the index of the end of the item, separated by :. This code would print the items at positions 3 and 4:
+
+print(my_tuple[3:5]) # prints (456, 789)
+
+Common Built-in Functions
+In contrast to lists, tuples have a limited number of built-in functions as they are immutable. We’ll take a look at a few built-in functions below:
+
+len()
+The length of a tuple can be measured using the built-in function len(). It takes the tuple as an argument to count the items in the tuple.
+
+my_tuple = ('abc', 123, 'def', 456, 789, 'ghi')
+print(len(my_tuple)) # prints 6
+
+max()
+The built-in function max() returns the tuple’s maximum value. Note that this function requires all of the values to be of the same data type. If used with numerical values, the function returns the maximum value. If used with string values, the function returns the value at the tuple’s maximum index as if it was sorted alphabetically. The string closer to the letter “Z” in the alphabet would have a higher index.
+
+my_tuple = (65, 2, 88, 101, 25)
+max(my_tuple) # returns 101
+ 
+my_tuple = ('orange', 'blue', 'red', 'green')
+max(my_tuple) # returns "red"
+ 
+my_tuple = ('abc', 234, 567, 'def')
+max(my_tuple) # throws an error!
+
+min()
+The built-in function min() returns the tuple’s minimum value. Similar to the max() function, the min() function requires all of the values to be of the same data type. If used with numerical values, the function returns the minimum value. If used with string values, the function returns the value at the tuple’s minimum index as if it was sorted alphabetically. The string closer to the letter “A” in the alphabet would have a lower index.
+
+my_tuple = (65, 2, 88, 101, 25)
+min(my_tuple) # returns 2
+my_tuple = ('orange', 'blue', 'red', 'green')
+min(my_tuple) # returns "blue"
+my_tuple = ('abc', 234, 567, 'def')
+min(my_tuple) # throws an error!
+
+.index()
+The built-in method `.index()’ takes in a value as the argument to find its index in the tuple.
+
+my_tuple = ('abc', 234, 567, 'def')
+my_tuple.index('abc') # returns 0
+my_tuple.index(567) # returns 2
+
+.count()
+The built-in method `.count()’ takes in a value as the argument to find the number of occurrences in the tuple.
+
+my_tuple = ('abc', 'abc', 2, 3, 4)
+my_tuple.count('abc') # returns 2
+my_tuple.count(3) # returns 1
+
+"""
+
+# zip() function is used to combine two lists into a list of tuples.
+
+"""
+In Python, we have an assortment of built-in functions that allow us to build our programs faster and cleaner. 
+One of those functions is zip().
+
+The zip() function allows us to quickly combine associated data-sets without needing to rely on multi-dimensional lists. 
+While zip() can work with many different scenarios, we are going to explore only a single one in this article.
+
+Let’s use a list of student names and associated heights as our example data set:
+
+Jenny is 61 inches tall
+Alexus is 70 inches tall
+Sam is 67 inches tall
+Grace is 64 inches tall
+Suppose that we already had a list of names and a list of heights:
+
+names = ["Jenny", "Alexus", "Sam", "Grace"]
+heights = [61, 70, 67, 64]
+
+If we wanted to create a nested list that paired each name with a height, we could use the built-in function zip().
+
+The zip() function takes two (or more) lists as inputs and returns an object that contains a list of pairs. 
+Each pair contains one element from each of the inputs. This is how we would do it for our names and heights lists:
+
+names_and_heights = zip(names, heights)
+
+If we were to then examine this new variable names_and_heights, we would find it looks a bit strange:
+
+print(names_and_heights)
+
+Would output:
+
+<zip object at 0x7f1631e86b48>
+
+This zip object contains the location of this variable in our computer’s memory. 
+Don’t worry though, it is fairly simple to convert this object into a useable list by using the built-in function list():
+
+converted_list = list(names_and_heights)
+print(converted_list)
+
+Outputs:
+
+[('Jenny', 61), ('Alexus', 70), ('Sam', 67), ('Grace', 64)]
+
+Notice two things:
+
+Our data set has been converted from a zip memory object to an actual list (denoted by [ ])
+
+Our inner lists don’t use square brackets [ ] around the values. 
+This is because they have been converted into tuples (an immutable type of list).  
+"""
+
+owners = ["Jenny", "Alexus", "Sam", "Grace"]
+dogs_names = ["Elphonse", "Dr. Doggy DDS", "Carter", "Ralph"]
+
+names_and_dogs_names = zip(owners,dogs_names)
+list_of_names_and_dogs_names = list(names_and_dogs_names)
+print(list_of_names_and_dogs_names)
